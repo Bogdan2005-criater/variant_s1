@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card">
+        <h2>Поставщики материала: {{ material_name }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Тип поставщика</th>
+                    <th>Рейтинг</th>
+                    <th>Дата начала сотрудничества</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for supplier in suppliers %}
+                <tr>
+                    <td>{{ supplier.name }}</td>
+                    <td>{{ supplier.supplier_type }}</td>
+                    <td>{{ supplier.rating }}</td>
+                    <td>{{ supplier.start_date }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Нет поставщиков для этого материала</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}" class="btn">На главную</a>
+    </div>
+{% endblock %}
